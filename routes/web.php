@@ -67,6 +67,9 @@ Route::group(['prefix'=>'admin/','as' => 'admin.','middleware'=>'auth']
 
     
 });
+
+
+
 Route::post('employee/verify',[EmployeeVerifyController::class,'veriFyEmployee']);
 Route::group(['prefix'=>'employee/','as' => 'employee.','middleware'=>'auth']
 ,function(){
