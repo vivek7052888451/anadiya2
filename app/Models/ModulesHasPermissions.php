@@ -11,7 +11,7 @@ class ModulesHasPermissions extends Model
     ];
     public function module()
     {
-        return $this->hasOne('App\Module', 'id', 'module_id');
+        return $this->hasOne('App\Models\Module', 'id', 'module_id');
     }
     public function permission()
     {

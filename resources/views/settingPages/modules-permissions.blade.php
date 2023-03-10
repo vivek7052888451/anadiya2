@@ -129,8 +129,8 @@
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>
-                                            <a href="{{ route('update_permission', $item->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5 button-edit btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></button></a>
-                                            <a onclick="return confirm('Are you sure?')" href="{{ route('delete_permission', $item->id) }}"><button type="button" class="btn btn-sm btn-icon on-editing button-discard btn-primary" title="Delete"><i class="fa fa-times"></i></button></a>
+                                            <a href="{{ route('admin.update_permission', $item->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5 button-edit btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></button></a>
+                                            <a onclick="return confirm('Are you sure?')" href="{{ route('admin.delete_permission', $item->id) }}"><button type="button" class="btn btn-sm btn-icon on-editing button-discard btn-primary" title="Delete"><i class="fa fa-times"></i></button></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -208,8 +208,8 @@
                                 <td>{{ $item['module']->name }}</td>
                                 <td>{{ $item['permission']->name }}</td>
                                 <td>
-                                    <a href="{{ route('update_module_has_permission', $item->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5 button-edit btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></button></a>
-                                    <a onclick="return confirm('Are you sure?')" href="{{ route('delete_module_permission', $item->id) }}"><button type="button" class="btn btn-sm btn-icon on-editing button-discard btn-primary" title="Delete"><i class="fa fa-times"></i></button></a>
+                                    <a href="{{ route('admin.update_module_has_permission', $item->id) }}"><button class="btn btn-sm btn-icon on-default m-r-5 button-edit btn-primary" data-original-title="Edit"><i class="fa fa-pencil"></i></button></a>
+                                    <a onclick="return confirm('Are you sure?')" href="{{ route('admin.delete_module_permission', $item->id) }}"><button type="button" class="btn btn-sm btn-icon on-editing button-discard btn-primary" title="Delete"><i class="fa fa-times"></i></button></a>
                                 </td>
                             </tr>
                             @endforeach

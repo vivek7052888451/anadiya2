@@ -1,28 +1,23 @@
-@extends('layouts.app')
+
+@extends('backend.layout.backmaster')
+
 
 {{-- All the content needs to put in head tag --}}
 @section('head-tag')
-    <title>ERP | Dashboard</title>
-	<style>
-		.card {
-    border: 0;
-    box-shadow: 0px;
-    margin-bottom: 10px;
-}
-.card-title{
-	font-size:18px;
-}
-	</style>
+    <title> Anadiya Travels| Role and Permissions</title>
+    <style>
+        body{
+            font-size:14px;
+        }
+        .vl {
+            border-left: 2px dashed #dedede;
+            height: 391px;
+            position: absolute;
+            margin: 0% 50%;
+        }
+    </style>
 @endsection
-
-
-{{-- Main page content strarts here --}}
-@section('content')
-
-<!-- Page Wrapper -->
-<div class="page-wrapper">
-
-			<!-- Page Content -->
+@section('section')
 			<div class="content container-fluid">
 
 				<!-- Page Header -->
@@ -78,7 +73,7 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<form action="{{ route('add-role') }}" method="POST">
+							<form action="{{ route('admin.add-role') }}" method="POST">
 								@csrf
 								<div class="form-group">
 									<label>Role Name <span class="text-danger">*</span></label>
@@ -147,8 +142,6 @@
 				</div>
 			</div>
 			<!-- /Delete Role Modal -->
-
- </div>
 		<!-- /Page Wrapper -->
 
 @endsection
@@ -188,7 +181,7 @@
                     //     val = thisEle.val();
                     // }
                     $.ajax({
-                        url: "{{ route('assign-role-permission') }}",
+                        url: "{{ route('admin.assign-role-permission') }}",
                         type: 'POST',
                         data: {
                             role: role,
@@ -207,6 +200,7 @@
 
 
 	function Mrole(id) {
+		
 $.ajax({
             url:"get-Module",
             type:'GET',

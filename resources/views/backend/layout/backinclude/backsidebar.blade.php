@@ -24,14 +24,46 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+                  <li class="nav-item {{ request()->is('module')? 'active' : '' }}">
+                      <a href="{{ route('admin.modules.index') }}"> 
+                          <span>Module</span>
+                      </a>
+                      </li>
+                      <li>
+                            <a href="{{ route('admin.role_permission.show') }}"> <span>Roles And Permissions</span></a>
+                        </li>
+                        <li class="nav-item {{ request()->is('assign-user-permission')? 'active' : '' }}">
+                          <a href="{{ route('admin.assign-user-permission') }}">
+                           <span>Users And Permissions</span>
+                          </a>
+                      </li>
+                  {{--@if(auth()->user()->hasAnyPermission('Module','Roles And Permissions','Users And Permissions'))
                   <li><a><i class="fa fa-home"></i> Setting <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('admin/module')}}">Add Module</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
+                      @canany(['Module', 'Roles And Permissions', 'Users And Permissions'])
+                      @can('Module')
+                      <li class="nav-item {{ request()->is('module')? 'active' : '' }}">
+                      <a href="{{ route('modules.index') }}"> 
+                          <span>Module</span>
+                      </a>
+                      </li>
+                      @endcan
+                      @can('Roles And Permissions')
+                        <li>
+                            <a href="{{ route('role_permission.show') }}"> <span>Roles And Permissions</span></a>
+                        </li>
+                      @endcan
+                      @can('Users And Permissions')
+                      <li class="nav-item {{ request()->is('assign-user-permission')? 'active' : '' }}">
+                          <a href="{{ route('assign-user-permission') }}">
+                           <span>Users And Permissions</span>
+                          </a>
+                      </li>
+                    @endcan
+                      @endcanany
                     </ul>
                   </li>
-              
+                  @endif--}}
                 </ul>
               </div>
               

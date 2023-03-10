@@ -85,10 +85,9 @@ class ModuleController extends Controller
         $role = Role::all();
         $module = Module::all();
         $permission = Permission::all();
-        $modulehaspermission = ModulesHasPermissions::with(['module','permission'])->groupBy('module_id')->get();
-        $latest_markatts = MarkAttendance::where('emp_id' , auth()->user()->emp_id)->orderBy('created_at', 'desc')->TAKE(1)->get();
-        return view('settingPages.rolesAndPermissions')->with(compact('role'))->with(compact('modulehaspermission'))->with(compact('module'))->with(compact('permission'))
-        ->with(compact('latest_markatts'));
+        // $modulehaspermission = ModulesHasPermissions::with(['module','permission'])->groupBy('module_id')->get();
+        
+        return view('settingPages.rolesAndPermissions')->with(compact('role'))->with(compact('module'))->with(compact('permission'));
     }
 
     /**
@@ -142,9 +141,9 @@ class ModuleController extends Controller
            Permission::where('id', $id)->update(['name'=> $data['permission']]);
            return  redirect()->route('modules.index')->with(compact('role'))->with(compact('modulehaspermission'))->with(compact('module'))->with(compact('permission'));
         }
-        $latest_markatts = MarkAttendance::where('emp_id' , auth()->user()->emp_id)->orderBy('created_at', 'desc')->TAKE(1)->get();
+        
         return view('settingPages.modules-permissions')->with(compact('updatePermission'))->with(compact('role'))->with(compact('modulehaspermission'))->with(compact('module'))
-        ->with(compact('permission'))->with(compact('latest_markatts'));
+        ->with(compact('permission'));
     }
 
     /**
@@ -207,9 +206,9 @@ class ModuleController extends Controller
            ModulesHasPermissions::where('id', $id)->update($data);
            return  redirect()->route('modules.index')->with(compact('role'))->with(compact('modulehaspermission'))->with(compact('module'))->with(compact('permission'));
         }
-        $latest_markatts = MarkAttendance::where('emp_id' , auth()->user()->emp_id)->orderBy('created_at', 'desc')->TAKE(1)->get();
+        
         return view('settingPages.modules-permissions')->with(compact('updateMP'))->with(compact('role'))->with(compact('modulehaspermission'))->with(compact('module'))
-        ->with(compact('permission'))->with(compact('latest_markatts'));
+        ->with(compact('permission'));
      }
      public function deleteModulePermission(Request $request, $id)
      {
@@ -231,14 +230,14 @@ class ModuleController extends Controller
      public function UserPermission(Request $request)
      {
          $roles = Role::all();
-         $admins = User::where('emp_status','Active')->role($roles)->get();
+         $admins = User::role($roles)->get();
          $permission = Permission::all();
          $module = Module::all();
-         $modulehaspermission = ModulesHasPermissions::with(['module','permission'])->groupBy('module_id')->get();
-            $latest_markatts = MarkAttendance::where('emp_id' , auth()->user()->emp_id)->orderBy('created_at', 'desc')->TAKE(1)->get();
-         $latest_markatts = MarkAttendance::where('emp_id' , auth()->user()->emp_id)->orderBy('created_at', 'desc')->TAKE(1)->get();
-         return view('settingPages.user_permissions')->with(compact('roles'))->with(compact('admins'))->with(compact('permission'))->with(compact('module'))
-         ->with(compact('modulehaspermission'))->with(compact('latest_markatts'));
+
+         // $modulehaspermission = ModulesHasPermissions::with(['module','permission'])->groupBy('module_id')->get();
+         // dd($modulehaspermission);
+            
+         return view('settingPages.user_permissions')->with(compact('roles'))->with(compact('admins'))->with(compact('permission'))->with(compact('module'));
      }
      public function updateUserPermission(Request $request)
      {

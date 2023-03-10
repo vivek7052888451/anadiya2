@@ -1,45 +1,31 @@
-@extends('layouts.app')
+
+@extends('backend.layout.backmaster')
+
 
 {{-- All the content needs to put in head tag --}}
 @section('head-tag')
-    <title>ERP |User Permission</title>
+    <title> Anadiya Travels| User and Permissions</title>
     <style>
-        .card {
-            border: 0;
-            box-shadow: 0px;
-            margin-bottom: 10px;
+        body{
+            font-size:14px;
         }
-        .card-title{
-            font-size:18px;
-        }
-        .makeList{height:290px;}
-        .makeList{overflow:hidden; overflow-y:scroll;}
-        .custom-control-input:checked ~ .custom-control-label::before {
-            background-color: green;
-            border-color: darken(green, 10%);
+        .vl {
+            border-left: 2px dashed #dedede;
+            height: 391px;
+            position: absolute;
+            margin: 0% 50%;
         }
     </style>
 @endsection
-
-
-{{-- Main page content strarts here --}}
-@section('content')
-
-    <!-- Main Wrapper -->
-    <div class="main-wrapper">
-
-        <!-- Page Wrapper -->
-        <div class="page-wrapper">
-
-            <!-- Page Content -->
-            <div class="content container-fluid">
+@section('section')
+         <div class="content container-fluid">
 
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">User & Permissions</li>
                             </ul>
                         </div>
@@ -92,7 +78,7 @@
             $('.perm_'+$d).html('Updating <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>');
             $('.perm_'+$d).prop('disabled', true);
             $.ajax({
-                url : "{{ route('update-user-permission') }}",
+                url : "{{ route('admin.update-user-permission') }}",
                 type : 'POST',
                 data : $(".updatePermissionsForm").serialize(),
                 success : function(respo){
@@ -138,6 +124,7 @@
         $(document).ready(function(){
             $("#myInput").on("keyup", function() {
                 var value = $(this).val();
+                alert(value);
                 if(value.length>0 && $.isNumeric(value))
                 {
                     $.get('search-user/'+value, function (employee) {
@@ -179,4 +166,3 @@
         };
     </script>
 @endsection
-

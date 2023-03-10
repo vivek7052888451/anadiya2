@@ -42,11 +42,12 @@ Route::group(['prefix'=>'admin/','as' => 'admin.','middleware'=>'auth']
 
     // [Roles, Modules and Permissions]
     Route::get('/module', [ModuleController::class,'index'])->name('modules.index');
-    // Route::get('/module', 'ModuleController@index')->name('modules.index')->middleware('can:Module');
-    Route::post('/selected-module', 'ModuleController@selectedModule')->name('selectedModule');
-    Route::get('/role-permission', 'ModuleController@show')->name('role_permission.show')->middleware('can:Roles And Permissions');
+    // Route::get('/module', [ModuleController::class,'index'])->name('modules.index')->middleware('can:Module');
+    Route::post('/selected-module', [ModuleController::class,'selectedModule'])->name('selectedModule');
+    // Route::get('/role-permission', [ModuleController::class,'show'])->name('role_permission.show')->middleware('can:Roles And Permissions');
+    Route::get('/role-permission', [ModuleController::class,'show'])->name('role_permission.show');
     Route::post('/add-module', [ModuleController::class,'store'])->name('add-module.store');
-    Route::post('/add-permission', 'ModuleController@addPermission')->name('add-permission');
+    Route::post('/add-permission', [ModuleController::class,'addPermission'])->name('add-permission');
     Route::post('/assign-module-permission' , [ModuleController::class,'assignPermissionToModule'])->name('assign-module-permission');
     Route::get('/edit-module/{id}/edit', [ModuleController::class,'edit'])->name('edit_module.edit');
     Route::match(['get','post'] ,'/edit-module/{id}' , [ModuleController::class,'edit'])->name('edit_module.edit');
@@ -57,10 +58,12 @@ Route::group(['prefix'=>'admin/','as' => 'admin.','middleware'=>'auth']
     Route::match(['get','post'] ,'/delete-module-permission/{id}' , [ModuleController::class,'deleteModulePermission'])->name('delete_module_permission');
     Route::post('/assign-role-permission' , [ModuleController::class,'assignPermissionToRole'])->name('assign-role-permission');
     Route::GET('/get-Module' , [ModuleController::class,'getModule'])->name('get_module');
-    Route::get('/assign-user-permission' , [ModuleController::class,'UserPermission'])->name('assign-user-permission')->middleware('can:Users And Permissions');
+    // Route::get('/assign-user-permission' , [ModuleController::class,'UserPermission'])->name('assign-user-permission')->middleware('can:Users And Permissions');
+
+    Route::get('/assign-user-permission' , [ModuleController::class,'UserPermission'])->name('assign-user-permission');
     Route::GET('/get-user-permission' , [ModuleController::class,'getUserPermission'])->name('get_user_permission');
     Route::post('/update-user-permission' , [ModuleController::class,'updateUserPermission'])->name('update-user-permission');
-    Route::post('/add-role', 'ModuleController@create')->name('add-role');
+    Route::post('/add-role', [ModuleController::class,'create'])->name('add-role');
 
 
      Route::get('search-user/{id}' , [ModuleController::class,'searchUser'])->name('search-user');

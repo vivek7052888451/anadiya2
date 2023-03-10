@@ -639,12 +639,32 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                <input type="text" name="first_name" class="form-control" placeholder="Enter first namme">
+                <input type="text" name="name" class="form-control" placeholder="Enter first namme">
               </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
-                <input type="text" name="first_name" class="form-control" placeholder="Enter first namme">
+                <input type="email" name="email" class="form-control" placeholder="Enter  email">
+              </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Enter  password">
+              </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                <input type="input" name="adhar_number" class="form-control" placeholder="Enter  adhar number">
+              </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                <input type="input" name="pan_number" class="form-control" placeholder="Enter  pan number">
+              </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                <input type="number" name="mobile" class="form-control" placeholder="Enter  mobile number">
               </div>
                 </div>
               </div>
